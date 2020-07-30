@@ -1,0 +1,25 @@
+<?php
+
+$config['base_url'] = 'http://store.test/';
+$config['timezone']			= 'Asia/Dhaka';
+
+/* ------------------------------------------------------------
+ * route
+ * ------------------------------------------------------------
+ */
+
+$config['route'] = [
+
+	''	=> 'dashboard',
+];
+
+
+/* ------------------------------------------------------------
+ * debug
+ * ------------------------------------------------------------
+ */ 
+$config['debug']			= false;
+// $config['debug_backtrace']	= true;
+
+$base_url             = rtrim($config['base_url'], '/');
+define('base_url', $base_url);
