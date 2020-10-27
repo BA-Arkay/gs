@@ -86,6 +86,19 @@ function create() {
                                 console.error(err);
                             }
                         })
+
+                        $.ajax({
+                            type: "POST",
+                            crossDomain: true,
+                            dataType: 'json',
+                            responseType: 'application/json',
+                            data: {
+                                'roll_no': item
+                            },
+                            url: APIOT_HOST + 'rack',
+                            success: function (res) { },
+                            error: (err) => {  }
+                        })
                     }
                 },
                 error: function (response) {

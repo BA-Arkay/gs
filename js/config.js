@@ -1,5 +1,6 @@
 let API_URL = 'http://greystoreapi.barcodetech-automation.com';
 const SYNC_API_HOST = 'http://apiot.barcodetech-automation.com';
+const APIOT_HOST    = 'http://apiot.epyllion.com/?factory=epyllion&entity=events&file=';
 
 const item_info_url = 'http://pfmsapi.barcodetech-automation.com/?app_key=1234&app=mother&method=roll_info&roll_no=';
 

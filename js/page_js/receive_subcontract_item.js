@@ -124,6 +124,19 @@ function create(item_detail) {
                             console.error(err);
                         }
                     })
+
+                    $.ajax({
+                        type: "POST",
+                        crossDomain: true,
+                        dataType: 'json',
+                        responseType: 'application/json',
+                        data: {
+                            'roll_no': item
+                        },
+                        url: APIOT_HOST + 'receive',
+                        success: function (res) { },
+                        error: (err) => {  }
+                    })
                 } else {
                     $.ajax({
                         type: "POST",
