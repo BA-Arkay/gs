@@ -69,35 +69,17 @@ function create() {
                             dataType: 'json',
                             responseType: 'application/json',
                             data: {
-                                'roll_no': item,
-                                'location': response.location
-                            },
-                            url: SYNC_RACKED_ROLL,
-                            success: function (res) {
-                                if(!res.success)
-                                {
-                                    storeUnSyncedRolls(item);
-                                } else {
-                                    console.log(res);
-                                }
-                            },
-                            error: (err) => { 
-                                storeUnSyncedRolls(item);
-                                console.error(err);
-                            }
-                        })
-
-                        $.ajax({
-                            type: "POST",
-                            crossDomain: true,
-                            dataType: 'json',
-                            responseType: 'application/json',
-                            data: {
                                 'roll_no': item
                             },
                             url: APIOT_HOST + 'rack',
-                            success: function (res) { },
-                            error: (err) => {  }
+                            success: function (res) {
+                                if (!res.success) {
+                                    storeUnSyncedRolls(item);
+                                }
+                            },
+                            error: (err) => {
+                                storeUnSyncedRolls(item);
+                            }
                         })
                     }
                 },

@@ -36,90 +36,6 @@ function create(item_detail) {
                 alertMessagePro(response);
 
                 if(response.success) {
-                    $.ajax({
-                        type: "POST",
-                        crossDomain: true,
-                        dataType: 'json',
-                        responseType: 'application/json',
-                        data: {
-                            'roll_no': item
-                        },
-                        url: SYNC_RECEIVED_ROLL,
-                        success: function (res) {
-                            if(!res.success)
-                            {
-                                let div = ` <div class="col-md-4">
-                                                <table class="table table-sm table-bordered table-hover">
-                                                    <thead style="background-color: #fff">
-                                                        <tr>
-                                                            <th colspan="2" class="text-center text-primary">${item}</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th colspan="2" class="text-center text-muted">Location Not Found</th>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>`;
-
-                                $('div#locationsBody').append(div);
-
-                                storeUnSyncedRolls(item);
-                            } else {
-                                let div = ` <div class="col-md-4">
-                                                <table class="table table-sm table-bordered table-hover">
-                                                    <thead style="background-color: #fff">
-                                                        <tr>
-                                                            <th colspan="2" class="text-center text-primary">${item}</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>`;
-
-                                if(res.locations.length > 0) {
-                                    res.locations.forEach(location => {
-                                        div += `<tr>
-                                                    <th class="text-info">${location.location}</th>
-                                                    <th class="text-danger">${location.item}</th>
-                                                </tr>`;
-                                    })
-                                } else {
-                                    div += `<tr>
-                                                <th colspan="2" class="text-center text-muted">Location Not Found</th>
-                                            </tr>`;
-                                }
-
-                                div += `</tbody>
-                                    </table>
-                                </div>`;
-
-                                $('div#locationsBody').append(div);
-
-                                console.log(res);
-                            }
-                        },
-                        error: (err) => {
-                            let div = ` <div class="col-md-4">
-                                            <table class="table table-sm table-bordered table-hover">
-                                                <thead style="background-color: #fff">
-                                                    <tr>
-                                                        <th colspan="2" class="text-center text-primary">${item}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th colspan="2" class="text-muted text-center">Failed To Retrieve</th>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>`;
-
-                            $('div#locationsBody').append(div);
-
-                            storeUnSyncedRolls(item);
-                            console.error(err);
-                        }
-                    })
 
                     $.ajax({
                         type: "POST",
@@ -130,74 +46,13 @@ function create(item_detail) {
                             'roll_no': item
                         },
                         url: APIOT_HOST + 'receive',
-                        success: function (res) { },
-                        error: (err) => {  }
-                    })
-                } else {
-                    $.ajax({
-                        type: "POST",
-                        crossDomain: true,
-                        dataType: 'json',
-                        responseType: 'application/json',
-                        data: {
-                            'roll_no': item
-                        },
-                        url: GET_ROLL_LOCATION,
                         success: function (res) {
-                            if(!res.success)
-                            {
-                                let div = ` <div class="col-md-4">
-                                                <table class="table table-sm table-bordered table-hover">
-                                                    <thead style="background-color: #fff">
-                                                        <tr>
-                                                            <th colspan="2" class="text-center text-primary">${item}</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th colspan="2" class="text-muted text-center">Location Not Found</th>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>`;
-
-                                $('div#locationsBody').append(div);
-
+                            if (!res.success) {
                                 storeUnSyncedRolls(item);
-                            } else {
-                                let div = `<div class="col-md-4">
-                                                <table class="table table-sm table-bordered table-hover">
-                                                    <thead style="background-color: #fff">
-                                                        <tr>
-                                                            <th colspan="2" class="text-center text-primary">${item}</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>`;
-
-                                if(res.locations.length > 0) {
-                                    res.locations.forEach(location => {
-                                        div += `<tr>
-                                                    <th class="text-info">${location.location}</th>
-                                                    <th class="text-danger">${location.item}</th>
-                                                </tr>`;
-                                    })
-                                } else {
-                                    div += `<tr>
-                                                <th colspan="2" class="text-center text-muted">Location Not Found</th>
-                                            </tr>`;
-                                }
-
-                                div += `</tbody>
-                                    </table>
-                                </div>`;
-
-                                $('div#locationsBody').append(div);
-
-                                console.log(res);
                             }
                         },
                         error: (err) => {
-                            console.error(err);
+                            storeUnSyncedRolls(item);
                         }
                     })
                 }
