@@ -79,46 +79,22 @@
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <li class="nav-item d-none">
         <a class="nav-link" href="<?=url('random_delivery');?>">
           <i class="fas fa-fw fa-truck"></i>
           <span>Random Deliver</span></a>
       </li>
 
  	<!-- Divider -->
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider d-none">
 
       <!-- Heading -->
-      <!--
-      <div class="sidebar-heading">
-        Requisition & Issue
-      </div>
-
-      <li class="nav-item">
-        <a class="nav-link" href="http://requisition.barcodetech-automation.com/requisition_requests.php" target="_blank">
-          <i class="fa fa-paper-plane"></i>
-          <span>Requisition Requests</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="http://requisition.barcodetech-automation.com/confirmed_requisitions.php" target="_blank">
-          <i class="fas fa-check"></i>
-          <span>Confirmed Requisitions</span></a>
-      </li>
-
-
-      <hr class="sidebar-divider d-none d-md-block">
-
-      -->
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
+      <div class="sidebar-heading d-none">
         Reports
       </div>
 
-
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
+      <li class="nav-item d-none">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReports" aria-expanded="true" aria-controls="collapseReports">
           <!-- <i class="fas fa-fw fa-info-circle"></i> -->
           <i class="fas fa-chart-bar"></i>
